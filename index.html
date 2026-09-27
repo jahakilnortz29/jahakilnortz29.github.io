@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jahakil Nortez | Personal Profile & Advocacy</title>
+    <!-- System font stack used for maximum speed, simplicity, and performance -->
+    <style>
+        :root {
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --accent-color: #2563eb;
+            --accent-hover: #1d4ed8;
+            --accent-light: #eff6ff;
+            --success-bg: #f0fdf4;
+            --success-border: #bbf7d0;
+            --success-text: #166534;
+            --radius: 8px;
+            --max-width: 760px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            width: 100%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text-main);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        nav {
+            display: flex;
+            gap: 8px;
+        }
+
+        .nav-btn {
+            background: none;
+            border: none;
+            font-family: inherit;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            padding: 8px 14px;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .nav-btn:hover {
+            color: var(--text-main);
+            background-color: var(--bg-color);
+        }
+
+        .nav-btn.active {
+            color: var(--accent-color);
+            background-color: var(--accent-light);
+        }
+
+        main {
+            flex: 1;
+            padding: 40px 0;
+        }
+
+        .page-section {
+            display: none;
+            animation: fadeIn 0.2s ease-in-out;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 28px;
+            margin-bottom: 24px;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+            color: var(--text-main);
+        }
+
+        h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            margin-bottom: 12px;
+            color: var(--text-main);
+        }
+
+        p {
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            font-size: 0.98rem;
+        }
+
+        p:last-child {
+            margin-bottom: 0;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 28px;
+        }
+
+        .avatar {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background-color: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--text-muted);
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+
+        .profile-title h1 {
+            margin-bottom: 4px;
+        }
+
+        .profile-title p {
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.95rem;
+        }
+
+        li:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .tag {
+            font-size: 0.8rem;
+            background-color: var(--bg-color);
+            color: var(--text-muted);
+            padding: 4px 10px;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            font-weight: 500;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            font-size: 0.88rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--text-main);
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 10px 12px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            background-color: #ffffff;
+            color: var(--text-main);
+            transition: border-color 0.15s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 110px;
+        }
+
+        .btn-submit {
+            background-color: var(--accent-color);
+            color: #ffffff;
+            border: none;
+            font-family: inherit;
+            font-size: 0.92rem;
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: background-color 0.15s ease;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .alert-success {
+            display: none;
+            background-color: var(--success-bg);
+            border: 1px solid var(--success-border);
+            color: var(--success-text);
+            padding: 12px 16px;
+            border-radius: var(--radius);
+            margin-bottom: 20px;
+            font-size: 0.92rem;
+        }
+
+        footer {
+            background-color: var(--card-bg);
+            border-top: 1px solid var(--border-color);
+            padding: 24px 0;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 600px) {
+            .nav-wrapper {
+                flex-direction: column;
+                height: auto;
+                padding: 12px 0;
+                gap: 12px;
+            }
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            li {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 6px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="container nav-wrapper">
+            <a href="#" onclick="showTab('home'); return false;" class="logo">Jahakil Nortez</a>
+            <nav>
+                <button onclick="showTab('home')" id="tab-home" class="nav-btn active">Home</button>
+                <button onclick="showTab('ethics')" id="tab-ethics" class="nav-btn">Ethics & Attribution</button>
+                <button onclick="showTab('contact')" id="tab-contact" class="nav-btn">Contact</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="container">
+
+        <!-- Page 1: Home / About -->
+        <section id="page-home" class="page-section active">
+            <div class="card">
+                <div class="profile-header">
+                    <div class="avatar">AR</div>
+                    <div class="profile-title">
+                        <h1>Jahakil Nortez</h1>
+                        <p>Web Developer & Digital Advocacy Specialist</p>
+                    </div>
+                </div>
+                <p>Hello! I am a developer and advocate focused on creating clear, lightweight, and accessible web experiences. I believe technology should serve people transparently without compromising privacy or user agency.</p>
+            </div>
+
+            <div class="card">
+                <h2>Mission Statement</h2>
+                <p>My work centers on developing open digital tools, promoting data privacy, and advocating for web accessibility. I aim to simplify online experiences by building fast, clean, and ethical digital software.</p>
+            </div>
+
+            <div class="card">
+                <h2>Key Focus Areas</h2>
+                <ul>
+                    <li>
+                        <span>Clean & Lightweight Web Design</span>
+                        <span class="tag">Frontend</span>
+                    </li>
+                    <li>
+                        <span>Data Privacy & Zero Tracking</span>
+                        <span class="tag">Advocacy</span>
+                    </li>
+                    <li>
+                        <span>Web Accessibility (WCAG Standards)</span>
+                        <span class="tag">Inclusion</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Page 2: Ethics & Attribution -->
+        <section id="page-ethics" class="page-section">
+            <div class="card">
+                <h1>Ethics & Media Attribution</h1>
+                <p>This website is built with a strict commitment to open-source software, transparent licensing, and ethical design principles.</p>
+            </div>
+
+            <div class="card">
+                <h2>Media Attribution & Licensing</h2>
+                <p>All third-party tools, fonts, and assets used across this application are listed below alongside their respect licenses:</p>
+                <ul>
+                    <li>
+                        <div>
+                            <strong>System Font Stack</strong>
+                            <div style="font-size: 0.85rem; color: var(--text-muted);">Native OS typography (San Francisco, Segoe UI, Roboto)</div>
+                        </div>
+                        <span class="tag">Public Domain</span>
+                    </li>
+                    <li>
+                        <div>
+                            <strong>Vanilla HTML/CSS & JS</strong>
+                            <div style="font-size: 0.85rem; color: var(--text-muted);">Standard W3C open web specifications</div>
+                        </div>
+                        <span class="tag">Open Standard</span>
+                    </li>
+                    <li>
+                        <div>
+                            <strong>Visual Icons & Design Tokens</strong>
+                            <div style="font-size: 0.85rem; color: var(--text-muted);">Custom CSS vector elements</div>
+                        </div>
+                        <span class="tag">MIT License</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>Privacy Statement</h2>
+                <p><strong>Zero Tracking Guarantee:</strong> This website does not use tracking cookies, analytics scripts, or third-party telemetry. We do not collect, store, or sell any user data during your visit.</p>
+            </div>
+        </section>
+
+        <!-- Page 3: Contact / Feedback -->
+        <section id="page-contact" class="page-section">
+            <div class="card">
+                <h1>Contact & Feedback</h1>
+                <p>Feel free to reach out with questions, collaboration ideas, or feedback. Fill out the simple form below to get in touch.</p>
+
+                <!-- Feedback Alert Message -->
+                <div id="contact-success" class="alert-success">
+                    ✓ Thank you! Your message has been received successfully.
+                </div>
+
+                <form id="contact-form" onsubmit="submitForm(event)">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" required placeholder="Your name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required placeholder="your.email@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" required placeholder="Write your message here..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Send Message</button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2026 Jahakil Nortez. Built simply with clean HTML, CSS, and JavaScript.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth Tab / Page Switcher
+        function showTab(tabId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page-section');
+            pages.forEach(page => page.classList.remove('active'));
+
+            // Deactivate all nav buttons
+            const navButtons = document.querySelectorAll('.nav-btn');
+            navButtons.forEach(btn => btn.classList.remove('active'));
+
+            // Show current page & activate tab button
+            const activePage = document.getElementById('page-' + tabId);
+            const activeBtn = document.getElementById('tab-' + tabId);
+
+            if (activePage && activeBtn) {
+                activePage.classList.add('active');
+                activeBtn.classList.add('active');
+            }
+
+            // Scroll gently to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Contact Form Submission Logic
+        function submitForm(event) {
+            event.preventDefault();
+            
+            const successAlert = document.getElementById('contact-success');
+            const form = document.getElementById('contact-form');
+
+            // Show success alert & reset form
+            successAlert.style.display = 'block';
+            form.reset();
+
+            // Auto-hide alert after 5 seconds
+            setTimeout(() => {
+                successAlert.style.display = 'none';
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
